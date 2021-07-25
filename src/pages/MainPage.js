@@ -13,6 +13,7 @@ function MainPage({
   setPlaylist,
   setUserInfo,
   setKakao,
+  getPlaylist,
 }) {
   const [searchedVideo, setSearchedVideo] = useState("");
   const [mode, setMode] = useState("default");
@@ -33,12 +34,15 @@ function MainPage({
           setMode={setMode}
           playlist={playlist}
           setPlaylist={setPlaylist}
+          userInfo={userInfo}
+          getPlaylist={getPlaylist}
         />
       ) : mode === "search" ? (
         <VideoList
           searchedVideo={searchedVideo}
           setCurrentVideo={setCurrentVideo}
           setMode={setMode}
+          mode={mode}
           setComments={setComments}
         />
       ) : (

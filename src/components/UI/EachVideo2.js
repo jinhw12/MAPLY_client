@@ -10,7 +10,6 @@ function EachVideo2({ video, setCurrentVideo, setComments }) {
       .then((res) => {
         setCurrentVideo(video);
         setComments(res.data.items);
-        //setMode("play"); //mode변경이 마지막에 되어야 에러가 안남
       });
   };
 

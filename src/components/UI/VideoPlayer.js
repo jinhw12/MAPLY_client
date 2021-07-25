@@ -9,11 +9,13 @@ function VideoPlayer({
   searchedVideo,
   setCurrentVideo,
   setComments,
-  setMode,
+  mode,
   playlist,
   setPlaylist,
+  userInfo,
+  getPlaylist,
 }) {
-  const [openPliModal, setOpenPliModal] = useState(false);
+  const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
 
   return (
     <>
@@ -27,7 +29,7 @@ function VideoPlayer({
             ></iframe>
           </div>
           <div>{currentVideo.snippet.title}</div>
-          <button onClick={() => setOpenPliModal(true)}>저장</button>
+          <button onClick={() => setOpenPlaylistModal(true)}>저장</button>
           <div>
             <ul>
               {comments.map((comment) => (
@@ -53,11 +55,13 @@ function VideoPlayer({
         </div>
       </div>
       <PlaylistModal
-        openPliModal={openPliModal}
-        setOpenPliModal={setOpenPliModal}
+        openPlaylistModal={openPlaylistModal}
+        setOpenPlaylistModal={setOpenPlaylistModal}
         playlist={playlist}
         setPlaylist={setPlaylist}
         currentVideo={currentVideo}
+        userInfo={userInfo}
+        getPlaylist={getPlaylist}
       ></PlaylistModal>
     </>
   );

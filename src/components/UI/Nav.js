@@ -13,6 +13,7 @@ function Nav({ setKakao, accessToken, clickLogout }) {
 
   return (
     <>
+      <button onClick={() => history.push("/")}>HOME</button>
       {accessToken.length > 0 ? (
         <button onClick={() => history.push("/mypage")}>Mypage</button>
       ) : (

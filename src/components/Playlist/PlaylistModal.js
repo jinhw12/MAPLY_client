@@ -3,45 +3,70 @@ import React, { useState } from "react";
 import AddPlaylist from "./AddPlaylist";
 
 function PlaylistModal({
-  openPliModal,
-  setOpenPliModal,
+  openPlaylistModal,
+  setOpenPlaylistModal,
   playlist,
   setPlaylist,
   currentVideo,
+  userInfo,
+  getPlaylist,
 }) {
-  const [openAddPli, setOpenAddPli] = useState(false);
+  const [openAddPlaylist, setOpenAddPlaylist] = useState(false);
 
   return (
     <>
-      <div className={`pli-modal background ${openPliModal ? "show" : ""}`}>
+      <div
+        className={`playlist-modal background ${
+          openPlaylistModal ? "show" : ""
+        }`}
+      >
         <div
-          className="pli-modal-outsider"
-          onClick={() => setOpenPliModal(false)}
+          className="playlist-modal-outsider"
+          onClick={() => setOpenPlaylistModal(false)}
         />
-        <div className="pli-modal-content">
+        <div className="playlist-modal-content">
           <div>
             저장하기
             <span
-              className="pli-modal-close"
-              onClick={() => setOpenPliModal(false)}
+              className="playlist-modal-close"
+              onClick={() => setOpenPlaylistModal(false)}
             >
               X
             </span>
             <hr></hr>
           </div>
           <div>
-            {playlist.length === 0 ? (
+            {playlist.length === 0 && !openAddPlaylist ? (
               <>
-                <button onClick={() => setOpenAddPli(true)}>+</button>
+                <button onClick={() => setOpenAddPlaylist(true)}>+</button>
                 <div>새 플레이리스트 만들기</div>
               </>
+            ) : playlist.length === 0 && openAddPlaylist ? (
+              <></>
             ) : (
-              playlist.map((each) => {
-                <div></div>;
-              })
+              <div>
+                <ul>
+                  {playlist.map((each) => (
+                    <li style={{ listStyleType: "none" }}>
+                      <div>{each.playlist_name}</div>
+                      <hr></hr>
+                    </li>
+                  ))}
+                </ul>
+                <hr />
+                <button onClick={() => setOpenAddPlaylist(true)}>+</button>
+                <div>새 플레이리스트 만들기</div>
+              </div>
             )}
           </div>
-          <AddPlaylist openAddPli={openAddPli} currentVideo={currentVideo} />
+          <AddPlaylist
+            openAddPlaylist={openAddPlaylist}
+            setOpenAddPlaylist={setOpenAddPlaylist}
+            currentVideo={currentVideo}
+            userInfo={userInfo}
+            getPlaylist={getPlaylist}
+            setOpenPlaylistModal={setOpenPlaylistModal}
+          />
         </div>
       </div>
     </>

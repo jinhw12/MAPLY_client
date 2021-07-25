@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
-import MyPage from "./pages/Mypage";
+import Mypage from "./pages/Mypage";
 import Nav from "./components/UI/Nav";
 const axios = require("axios");
 
@@ -29,17 +29,19 @@ function App() {
       return;
     } else {
       axios
-        .get(`http://localhost:4000/user/kakao?code=${code}`)
+        .get(`${process.env.REACT_APP_SERVER_URL}/user/kakao?code=${code}`)
         .then((res) => {
-          console.log("res : ", res);
+          const { id, username, email } = res.data.dataValues;
           setAccessToken(res.data.accessToken);
           setUserInfo({
-            username: res.data.dataValues.username,
-            email: res.data.dataValues.email,
+            id,
+            username,
+            email,
           });
           localStorage.setItem("accessToken", res.data.accessToken);
           localStorage.setItem("userInfo", JSON.stringify(res.data.dataValues));
           window.location.href = "http://localhost:3000";
+          getPlaylist();
         })
         .catch((err) => {
           console.log(err);
@@ -54,13 +56,22 @@ function App() {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      }) //서버로 토큰 보내기
-      .then((res) => {
+      })
+      .then(() => {
         setAccessToken("");
         setUserInfo({});
         localStorage.clear();
       })
       .catch((e) => console.log(e));
+  };
+
+  const getPlaylist = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/playlist/${userInfo.id}`)
+      .then((res) => {
+        console.log("get playlist : ", res.data);
+        setPlaylist(res.data);
+      });
   };
 
   return (
@@ -71,19 +82,25 @@ function App() {
         clickLogout={clickLogout}
       />
       <Switch>
-        <Route
-          exact
-          path="/"
-          component={MainPage}
-          accessToken={accessToken}
-          userInfo={userInfo}
-          playlist={playlist}
-          setAccessToken={setAccessToken}
-          setUserInfo={setUserInfo}
-          setPlaylist={setPlaylist}
-          setKakao={setKakao}
-        />
-        <Route exact path="/mypage" component={MyPage} />
+        <Route exact path="/">
+          <MainPage
+            accessToken={accessToken}
+            userInfo={userInfo}
+            playlist={playlist}
+            setAccessToken={setAccessToken}
+            setUserInfo={setUserInfo}
+            setPlaylist={setPlaylist}
+            setKakao={setKakao}
+            getPlaylist={getPlaylist}
+          />
+        </Route>
+        <Route path="/mypage">
+          <Mypage
+            accessToken={accessToken}
+            userInfo={userInfo}
+            playlist={playlist}
+          />
+        </Route>
       </Switch>
     </Router>
   );
