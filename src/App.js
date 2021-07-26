@@ -6,6 +6,15 @@ import Mypage from "./pages/Mypage";
 import Nav from "./components/UI/Nav";
 const axios = require("axios");
 
+axios.interceptors.response.use(function (res) {
+  if (res.data.error_code === 401) {
+    localStorage.clear();
+    alert("토큰이 만료되었습니다. 다시 로그인 해주세요!")
+    window.location.reload();
+  }
+  return res;
+});
+
 function App() {
   const [userInfo, setUserInfo] = useState({});
   const [accessToken, setAccessToken] = useState("");

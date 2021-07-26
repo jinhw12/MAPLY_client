@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TrendVideo from './TrendVideo';
 import axios from "axios";
 
-function TrendVideoList() {
+function TrendVideoList({ setCurrentVideo, setMode, setComments }) {
   useEffect(() => {
     if (trendVideos.length === 0) {
       getTrendVideos();
@@ -39,7 +39,12 @@ function TrendVideoList() {
     <>
       <div>
         {
-          trendVideos.map((video, rank) => <TrendVideo video={video} rank={rank} />)
+          trendVideos.map((video, rank) => <TrendVideo
+            video={video}
+            rank={rank}
+            setCurrentVideo={setCurrentVideo}
+            setMode={setMode}
+            setComments={setComments} />)
         }
       </div>
     </>

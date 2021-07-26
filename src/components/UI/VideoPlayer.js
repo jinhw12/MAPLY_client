@@ -19,7 +19,7 @@ function VideoPlayer({
   playlistPlayer,
 }) {
   const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
-
+  console.log("currentVideo : ", currentVideo);
   return (
     <>
       <div className="video-player">
