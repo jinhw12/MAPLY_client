@@ -14,6 +14,7 @@ function App() {
   const [currentVideo, setCurrentVideo] = useState("");
   const [mode, setMode] = useState("default");
   const [comments, setComments] = useState("");
+  const [playlistPlayer, setPlaylistPlayer] = useState([]);
 
   useEffect(() => {
     clickLogin();
@@ -107,6 +108,7 @@ function App() {
             setMode={setMode}
             comments={comments}
             setComments={setComments}
+            playlistPlayer={playlistPlayer}
           />
         </Route>
         <Route path="/mypage">
@@ -117,6 +119,7 @@ function App() {
             setCurrentVideo={setCurrentVideo}
             setMode={setMode}
             setComments={setComments}
+            setPlaylistPlayer={setPlaylistPlayer}
           />
         </Route>
       </Switch>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import EachVideo2 from "./EachVideo2";
+import EachVideo3 from "./EachVideo3";
 import PlaylistModal from "../Playlist/PlaylistModal";
 
 function VideoPlayer({
@@ -15,6 +16,7 @@ function VideoPlayer({
   userInfo,
   getPlaylist,
   accessToken,
+  playlistPlayer,
 }) {
   const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
 
@@ -53,6 +55,15 @@ function VideoPlayer({
                 setCurrentVideo={setCurrentVideo}
                 setComments={setComments}
               ></EachVideo2>
+            ))}
+          {playlistPlayer.length > 0 &&
+            playlistPlayer.map((video) => (
+              <EachVideo3
+                video={video}
+                key={video.id}
+                setCurrentVideo={setCurrentVideo}
+                setComments={setComments}
+              />
             ))}
         </div>
       </div>

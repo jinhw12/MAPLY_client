@@ -9,6 +9,7 @@ function Mypage({
   setCurrentVideo,
   setMode,
   setComments,
+  setPlaylistPlayer,
 }) {
   return (
     <div>
@@ -30,6 +31,7 @@ function Mypage({
         setCurrentVideo={setCurrentVideo}
         setMode={setMode}
         setComments={setComments}
+        setPlaylistPlayer={setPlaylistPlayer}
       />
     </div>
   );

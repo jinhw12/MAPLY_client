@@ -20,6 +20,7 @@ function MainPage({
   setMode,
   comments,
   setComments,
+  playlistPlayer,
 }) {
   const [searchedVideo, setSearchedVideo] = useState("");
 
@@ -40,6 +41,7 @@ function MainPage({
           userInfo={userInfo}
           getPlaylist={getPlaylist}
           accessToken={accessToken}
+          playlistPlayer={playlistPlayer}
         />
       ) : mode === "search" ? (
         <VideoList

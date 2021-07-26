@@ -2,12 +2,25 @@ import axios from "axios";
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-function EachMyVideo({ video, setCurrentVideo, setMode, setComments }) {
+function EachMyVideo({
+  video,
+  setCurrentVideo,
+  setMode,
+  setComments,
+  eachPlaylist,
+  setPlaylistPlayer,
+  currentPlaylist,
+}) {
   const history = useHistory();
   const { title, thumbnail, video_id } = video;
   const myVideo = {
     snippet: {
       title,
+      thumbnails: {
+        medium: {
+          url: thumbnail,
+        },
+      },
     },
     id: {
       videoId: video_id,
@@ -19,6 +32,7 @@ function EachMyVideo({ video, setCurrentVideo, setMode, setComments }) {
     );
     setComments(result.data.items);
     setCurrentVideo(myVideo);
+    setPlaylistPlayer(currentPlaylist);
     setMode("play");
     history.push("/");
   };

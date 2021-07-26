@@ -8,6 +8,7 @@ function EachPlaylist({
   setCurrentVideo,
   setMode,
   setComments,
+  setPlaylistPlayer,
 }) {
   const { playlist_name, count, playlist_thumbnail, id } = eachPlaylist;
   const [currentPlaylist, setCurrentPlaylist] = useState([]);
@@ -54,6 +55,9 @@ function EachPlaylist({
               setCurrentVideo={setCurrentVideo}
               setMode={setMode}
               setComments={setComments}
+              eachPlaylist={eachPlaylist}
+              setPlaylistPlayer={setPlaylistPlayer}
+              currentPlaylist={currentPlaylist}
             />
           ))}
       </div>

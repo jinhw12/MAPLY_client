@@ -8,6 +8,7 @@ function MyPlaylist({
   setCurrentVideo,
   setMode,
   setComments,
+  setPlaylistPlayer,
 }) {
   return (
     <div className="mypage-playlist">
@@ -27,6 +28,7 @@ function MyPlaylist({
             setCurrentVideo={setCurrentVideo}
             setMode={setMode}
             setComments={setComments}
+            setPlaylistPlayer={setPlaylistPlayer}
           />
         ))
       )}

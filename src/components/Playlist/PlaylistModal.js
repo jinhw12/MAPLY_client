@@ -38,14 +38,18 @@ function PlaylistModal({
       .then(() => {
         setOpenPlaylistModal(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("already exist");
+      });
   };
 
   return (
     <>
       <div
-        className={`playlist-modal background ${openPlaylistModal ? "show" : ""
-          }`}
+        className={`playlist-modal background ${
+          openPlaylistModal ? "show" : ""
+        }`}
       >
         <div
           className="playlist-modal-outsider"
