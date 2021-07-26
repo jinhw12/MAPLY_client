@@ -9,10 +9,16 @@ function EachPlaylist({
   setMode,
   setComments,
   setPlaylistPlayer,
+  handleCheckedPlaylist,
+  showCheckbox,
+  getPlaylist,
+  setPlaylist,
+  userInfo,
 }) {
   const { playlist_name, count, playlist_thumbnail, id } = eachPlaylist;
   const [currentPlaylist, setCurrentPlaylist] = useState([]);
   const [isShow, setIsShow] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const getVideo = () => {
     setIsShow(true);
@@ -34,9 +40,23 @@ function EachPlaylist({
     setCurrentPlaylist([]);
   };
 
+  const handleChecked = (e) => {
+    setIsChecked(!isChecked);
+    handleCheckedPlaylist(e.target.checked, id);
+  };
+
   return (
     <>
       <div>
+        {showCheckbox && (
+          <div>
+            <input
+              type="checkbox"
+              onChange={handleChecked}
+              checked={isChecked}
+            />
+          </div>
+        )}
         <div className="playlist-thumbnail">
           <img src={playlist_thumbnail}></img>
         </div>
@@ -58,6 +78,12 @@ function EachPlaylist({
               eachPlaylist={eachPlaylist}
               setPlaylistPlayer={setPlaylistPlayer}
               currentPlaylist={currentPlaylist}
+              setCurrentPlaylist={setCurrentPlaylist}
+              getPlaylist={getPlaylist}
+              accessToken={accessToken}
+              setPlaylist={setPlaylist}
+              userInfo={userInfo}
+              getVideo={getVideo}
             />
           ))}
       </div>

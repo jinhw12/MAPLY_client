@@ -9,7 +9,7 @@ const axios = require("axios");
 axios.interceptors.response.use(function (res) {
   if (res.data.error_code === 401) {
     localStorage.clear();
-    alert("토큰이 만료되었습니다. 다시 로그인 해주세요!")
+    alert("토큰이 만료되었습니다. 다시 로그인 해주세요!");
     window.location.reload();
   }
   return res;
@@ -99,6 +99,7 @@ function App() {
         setKakao={setKakao}
         accessToken={accessToken}
         clickLogout={clickLogout}
+        setMode={setMode}
       />
       <Switch>
         <Route exact path="/">
@@ -129,6 +130,8 @@ function App() {
             setMode={setMode}
             setComments={setComments}
             setPlaylistPlayer={setPlaylistPlayer}
+            getPlaylist={getPlaylist}
+            setPlaylist={setPlaylist}
           />
         </Route>
       </Switch>

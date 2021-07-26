@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 function AddPlaylist({
   openAddPlaylist,
@@ -44,6 +44,12 @@ function AddPlaylist({
         playlistNameInput.current.value = "";
       });
   };
+
+  useEffect(() => {
+    if (!openAddPlaylist) {
+      playlistNameInput.current.value = "";
+    }
+  }, [openAddPlaylist]);
 
   return (
     <div className={`add-playlist background ${openAddPlaylist ? "show" : ""}`}>
