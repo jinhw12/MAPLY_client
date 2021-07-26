@@ -25,7 +25,6 @@ function MainPage({
 
   return (
     <>
-      <div className="main-img"></div>
       <SearchVideo setSearchedVideo={setSearchedVideo} setMode={setMode} />
       {mode === "play" ? (
         <VideoPlayer
