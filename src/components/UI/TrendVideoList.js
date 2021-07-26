@@ -16,7 +16,7 @@ function TrendVideoList({ setCurrentVideo, setMode, setComments }) {
     params: {
       part: "id,snippet",
       chart: "mostPopular",
-      maxResults: 10,
+      maxResults: 9,
       key: process.env.REACT_APP_YOUTUBE_API_KEY,
     },
   });

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Login from "../User/Login";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import logo from "../../images/maply_logo.png";
+import "./Nav.css";
 
 function Nav({ setKakao, accessToken, clickLogout }) {
   const history = useHistory();
@@ -12,22 +14,25 @@ function Nav({ setKakao, accessToken, clickLogout }) {
   };
 
   return (
-    <>
-      <button onClick={() => history.push("/")}>HOME</button>
-      {accessToken.length > 0 ? (
-        <button onClick={() => history.push("/mypage")}>Mypage</button>
-      ) : (
-        <></>
-      )}
-      <button onClick={accessToken.length > 0 ? clickLogout : clickLogin}>
-        {accessToken.length > 0 ? "Logout" : "Login"}
-      </button>
+    <div className="nav-container">
+      <img className="nav-logo" src={logo} onClick={() => history.push("/")} />
+      <div className="nav-btn-container">
+        <button className="nav-btn yellow" onClick={() => history.push("/")}>HOME</button>
+        {accessToken.length > 0 ? (
+          <button className="nav-btn green" onClick={() => history.push("/mypage")}>Mypage</button>
+        ) : (
+          <></>
+        )}
+        <button className={`nav-btn ${accessToken.length > 0 ? "red" : "green"}`} onClick={accessToken.length > 0 ? clickLogout : clickLogin}>
+          {accessToken.length > 0 ? "Logout" : "Login"}
+        </button>
+      </div>
       <Login
         openLogin={openLogin}
         setOpenLogin={setOpenLogin}
         setKakao={setKakao}
       />
-    </>
+    </div>
   );
 }
 
