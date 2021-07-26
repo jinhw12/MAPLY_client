@@ -3,7 +3,6 @@ import SearchVideo from "../components/UI/SearchVideo";
 import VideoList from "../components/UI/VideoList";
 import VideoPlayer from "../components/UI/VideoPlayer";
 import TrendVideoList from "../components/UI/TrendVideoList";
-const axios = require("axios");
 
 function MainPage({
   accessToken,
@@ -47,7 +46,11 @@ function MainPage({
           setComments={setComments}
         />
       ) : (
-        <TrendVideoList />
+        <TrendVideoList
+          setCurrentVideo={setCurrentVideo}
+          setMode={setMode}
+          setComments={setComments}
+        />
       )}
     </>
   );
