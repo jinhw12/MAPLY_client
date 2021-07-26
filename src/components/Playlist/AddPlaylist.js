@@ -37,7 +37,7 @@ function AddPlaylist({
         }
       )
       .then(() => {
-        getPlaylist(id);
+        getPlaylist(id, accessToken);
         setPlaylistName("");
         setOpenAddPlaylist(false);
         setOpenPlaylistModal(false);

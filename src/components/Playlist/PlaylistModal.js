@@ -33,7 +33,7 @@ function PlaylistModal({
       )
       .then((res) => {
         console.log("add video : ", res);
-        getPlaylist(userInfo.id);
+        getPlaylist(userInfo.id, accessToken);
       })
       .then(() => {
         setOpenPlaylistModal(false);
