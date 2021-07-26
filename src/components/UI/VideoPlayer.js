@@ -45,14 +45,15 @@ function VideoPlayer({
           </div>
         </div>
         <div className="list-section">
-          {searchedVideo.map((video) => (
-            <EachVideo2
-              video={video}
-              key={video.etag}
-              setCurrentVideo={setCurrentVideo}
-              setComments={setComments}
-            ></EachVideo2>
-          ))}
+          {searchedVideo.length > 0 &&
+            searchedVideo.map((video) => (
+              <EachVideo2
+                video={video}
+                key={video.etag}
+                setCurrentVideo={setCurrentVideo}
+                setComments={setComments}
+              ></EachVideo2>
+            ))}
         </div>
       </div>
       <PlaylistModal

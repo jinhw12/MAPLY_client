@@ -1,10 +1,26 @@
 import axios from "axios";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
-function EachMyVideo({ video }) {
+function EachMyVideo({ video, setCurrentVideo, setMode, setComments }) {
+  const history = useHistory();
   const { title, thumbnail, video_id } = video;
-  const handleClickVideo = () => {
-    //setCurrentVideo(video)//video 객체 형태 바꾸기
+  const myVideo = {
+    snippet: {
+      title,
+    },
+    id: {
+      videoId: video_id,
+    },
+  };
+  const handleClickVideo = async () => {
+    const result = await axios.get(
+      `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video_id}&maxResults=50`
+    );
+    setComments(result.data.items);
+    setCurrentVideo(myVideo);
+    setMode("play");
+    history.push("/");
   };
   return (
     <>

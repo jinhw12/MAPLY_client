@@ -2,7 +2,13 @@ import axios from "axios";
 import React from "react";
 import EachPlaylist from "./EachPlaylist";
 
-function MyPlaylist({ playlist, accessToken }) {
+function MyPlaylist({
+  playlist,
+  accessToken,
+  setCurrentVideo,
+  setMode,
+  setComments,
+}) {
   return (
     <div className="mypage-playlist">
       <div>
@@ -18,6 +24,9 @@ function MyPlaylist({ playlist, accessToken }) {
             eachPlaylist={each}
             key={each.id}
             accessToken={accessToken}
+            setCurrentVideo={setCurrentVideo}
+            setMode={setMode}
+            setComments={setComments}
           />
         ))
       )}

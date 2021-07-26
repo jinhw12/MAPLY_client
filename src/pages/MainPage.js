@@ -14,11 +14,14 @@ function MainPage({
   setUserInfo,
   setKakao,
   getPlaylist,
+  currentVideo,
+  setCurrentVideo,
+  mode,
+  setMode,
+  comments,
+  setComments,
 }) {
   const [searchedVideo, setSearchedVideo] = useState("");
-  const [mode, setMode] = useState("default");
-  const [currentVideo, setCurrentVideo] = useState("");
-  const [comments, setComments] = useState("");
 
   return (
     <>

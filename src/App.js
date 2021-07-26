@@ -11,6 +11,9 @@ function App() {
   const [accessToken, setAccessToken] = useState("");
   const [playlist, setPlaylist] = useState([]);
   const [kakao, setKakao] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState("");
+  const [mode, setMode] = useState("default");
+  const [comments, setComments] = useState("");
 
   useEffect(() => {
     clickLogin();
@@ -27,14 +30,16 @@ function App() {
     if (Object.keys(userInfo).length > 0) {
       getPlaylist();
     }
-  }, [userInfo])
+  }, [userInfo]);
 
   const clickLogin = async () => {
     let code = new URL(window.location.href).searchParams.get("code");
     if (!code) {
       return;
     } else {
-      const kakaoRes = await axios.get(`${process.env.REACT_APP_SERVER_URL}/user/kakao?code=${code}`);
+      const kakaoRes = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/user/kakao?code=${code}`
+      );
       const { id, username, email, accessToken } = kakaoRes.data.dataValues;
       handleLogin(id, username, email, accessToken);
     }
@@ -46,7 +51,7 @@ function App() {
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("userInfo", JSON.stringify({ id, username, email }));
     window.history.pushState(null, null, "/");
-  }
+  };
 
   const clickLogout = () => {
     axios
@@ -65,13 +70,15 @@ function App() {
   };
 
   const getPlaylist = async () => {
-    const playList = await axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist/${userInfo.id}`,
+    const playList = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/playlist/${userInfo.id}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
         withCredentials: true,
-      });
+      }
+    );
     setPlaylist(playList.data);
     console.log("get playlist : ", playList.data);
   };
@@ -94,6 +101,12 @@ function App() {
             setPlaylist={setPlaylist}
             setKakao={setKakao}
             getPlaylist={getPlaylist}
+            currentVideo={currentVideo}
+            setCurrentVideo={setCurrentVideo}
+            mode={mode}
+            setMode={setMode}
+            comments={comments}
+            setComments={setComments}
           />
         </Route>
         <Route path="/mypage">
@@ -101,6 +114,9 @@ function App() {
             accessToken={accessToken}
             userInfo={userInfo}
             playlist={playlist}
+            setCurrentVideo={setCurrentVideo}
+            setMode={setMode}
+            setComments={setComments}
           />
         </Route>
       </Switch>

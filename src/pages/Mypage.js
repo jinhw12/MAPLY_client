@@ -2,7 +2,14 @@ import React from "react";
 import axios from "axios";
 import MyPlaylist from "../components/Playlist/MyPlaylist";
 
-function Mypage({ accessToken, userInfo, playlist }) {
+function Mypage({
+  accessToken,
+  userInfo,
+  playlist,
+  setCurrentVideo,
+  setMode,
+  setComments,
+}) {
   return (
     <div>
       <div>MY PAGE</div>
@@ -17,7 +24,13 @@ function Mypage({ accessToken, userInfo, playlist }) {
           <span>{userInfo.email}</span>
         </div>
       </div>
-      <MyPlaylist playlist={playlist} accessToken={accessToken} />
+      <MyPlaylist
+        playlist={playlist}
+        accessToken={accessToken}
+        setCurrentVideo={setCurrentVideo}
+        setMode={setMode}
+        setComments={setComments}
+      />
     </div>
   );
 }
