@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchVideo from "../components/UI/SearchVideo";
 import VideoList from "../components/UI/VideoList";
 import VideoPlayer from "../components/UI/VideoPlayer";
-import TrendVideo from "../components/UI/TrendVideo";
+import TrendVideoList from "../components/UI/TrendVideoList";
 const axios = require("axios");
 
 function MainPage({
@@ -47,7 +47,7 @@ function MainPage({
           setComments={setComments}
         />
       ) : (
-        <TrendVideo />
+        <TrendVideoList />
       )}
     </>
   );
