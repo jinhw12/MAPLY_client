@@ -11,7 +11,7 @@ function MyPlaylist({ playlist, accessToken }) {
       </div>
       <hr />
       {playlist.length === 0 ? (
-        <div>Make your playlsit!</div>
+        <div>Make your playlist!</div>
       ) : (
         playlist.map((each) => (
           <EachPlaylist

@@ -44,9 +44,8 @@ function PlaylistModal({
   return (
     <>
       <div
-        className={`playlist-modal background ${
-          openPlaylistModal ? "show" : ""
-        }`}
+        className={`playlist-modal background ${openPlaylistModal ? "show" : ""
+          }`}
       >
         <div
           className="playlist-modal-outsider"

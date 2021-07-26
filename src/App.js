@@ -13,7 +13,7 @@ function App() {
   const [kakao, setKakao] = useState(false);
 
   useEffect(() => {
-    handleLogin();
+    clickLogin();
   }, [kakao]);
 
   useEffect(() => {
@@ -23,35 +23,30 @@ function App() {
     }
   }, []);
 
-  const handleLogin = () => {
+  useEffect(() => {
+    if (Object.keys(userInfo).length > 0) {
+      getPlaylist();
+    }
+  }, [userInfo])
+
+  const clickLogin = async () => {
     let code = new URL(window.location.href).searchParams.get("code");
     if (!code) {
       return;
     } else {
-      axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/user/kakao?code=${code}`)
-        .then((res) => {
-          const { id, username, email } = res.data.dataValues;
-          setAccessToken(res.data.accessToken);
-          setUserInfo({
-            id,
-            username,
-            email,
-          });
-          localStorage.setItem("accessToken", res.data.accessToken);
-          localStorage.setItem("userInfo", JSON.stringify(res.data.dataValues));
-          window.history.pushState(null, null, "/");
-          return { id, accessToken: res.data.accessToken };
-        })
-        .then((data) => {
-          getPlaylist(data.id, data.accessToken);
-        })
-        .catch((err) => {
-          console.log(err);
-          window.location.href = "http://localhost:3000";
-        });
+      const kakaoRes = await axios.get(`${process.env.REACT_APP_SERVER_URL}/user/kakao?code=${code}`);
+      const { id, username, email, accessToken } = kakaoRes.data.dataValues;
+      handleLogin(id, username, email, accessToken);
     }
   };
+
+  const handleLogin = (id, username, email, accessToken) => {
+    setAccessToken(accessToken);
+    setUserInfo({ id, username, email });
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("userInfo", JSON.stringify({ id, username, email }));
+    window.history.pushState(null, null, "/");
+  }
 
   const clickLogout = () => {
     axios
@@ -69,18 +64,16 @@ function App() {
       .catch((e) => console.log(e));
   };
 
-  const getPlaylist = (userId, accessToken2) => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/playlist/${userId}`, {
+  const getPlaylist = async () => {
+    const playList = await axios.get(`${process.env.REACT_APP_SERVER_URL}/playlist/${userInfo.id}`,
+      {
         headers: {
-          Authorization: `Bearer ${accessToken2}`,
+          Authorization: `Bearer ${accessToken}`,
         },
         withCredentials: true,
-      })
-      .then((res) => {
-        console.log("get playlist : ", res.data);
-        setPlaylist(res.data);
       });
+    setPlaylist(playList.data);
+    console.log("get playlist : ", playList.data);
   };
 
   return (
