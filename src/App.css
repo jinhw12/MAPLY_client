@@ -1,9 +1,23 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100vw;
+  min-width: 320px;
+}
+
 .background {
   display: none;
 }
+
 .show {
   display: block;
 }
+
 .login-signup-modal-outsider {
   position: fixed;
   /* z-index: 1; */
@@ -15,6 +29,7 @@
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .login-signup-modal {
   background-color: #fefefe;
   position: absolute;
@@ -30,19 +45,17 @@
   border-radius: 20px;
   text-align: center;
 }
-.main-img {
-  background-color: #888;
-  width: 80vw;
-  height: 35vh;
-}
+
 .iframe {
   width: 50vw;
   height: 30vh;
 }
+
 .playcontent {
   display: flex;
   flex-direction: column;
 }
+
 .playlist-modal-outsider {
   position: fixed;
   /* z-index: 1; */
@@ -54,6 +67,7 @@
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 .playlist-modal-content {
   background-color: #fefefe;
   position: absolute;
