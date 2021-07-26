@@ -17,7 +17,7 @@ function Mypage({ accessToken, userInfo, playlist }) {
           <span>{userInfo.email}</span>
         </div>
       </div>
-      <MyPlaylist playlist={playlist} />
+      <MyPlaylist playlist={playlist} accessToken={accessToken} />
     </div>
   );
 }
