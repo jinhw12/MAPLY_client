@@ -14,6 +14,7 @@ function VideoPlayer({
   setPlaylist,
   userInfo,
   getPlaylist,
+  accessToken,
 }) {
   const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
 
@@ -62,6 +63,7 @@ function VideoPlayer({
         currentVideo={currentVideo}
         userInfo={userInfo}
         getPlaylist={getPlaylist}
+        accessToken={accessToken}
       ></PlaylistModal>
     </>
   );

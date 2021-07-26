@@ -40,8 +40,11 @@ function App() {
           });
           localStorage.setItem("accessToken", res.data.accessToken);
           localStorage.setItem("userInfo", JSON.stringify(res.data.dataValues));
-          window.location.href = "http://localhost:3000";
-          getPlaylist();
+          window.history.pushState(null, null, "/");
+          return { id, accessToken: res.data.accessToken };
+        })
+        .then((data) => {
+          getPlaylist(data.id, data.accessToken);
         })
         .catch((err) => {
           console.log(err);
@@ -56,6 +59,7 @@ function App() {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
+        withCredentials: true,
       })
       .then(() => {
         setAccessToken("");
@@ -65,9 +69,14 @@ function App() {
       .catch((e) => console.log(e));
   };
 
-  const getPlaylist = () => {
+  const getPlaylist = (userId, accessToken2) => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/playlist/${userInfo.id}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/playlist/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken2}`,
+        },
+        withCredentials: true,
+      })
       .then((res) => {
         console.log("get playlist : ", res.data);
         setPlaylist(res.data);

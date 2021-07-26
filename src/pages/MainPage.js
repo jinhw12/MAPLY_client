@@ -36,6 +36,7 @@ function MainPage({
           setPlaylist={setPlaylist}
           userInfo={userInfo}
           getPlaylist={getPlaylist}
+          accessToken={accessToken}
         />
       ) : mode === "search" ? (
         <VideoList
