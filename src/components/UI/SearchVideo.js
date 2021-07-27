@@ -33,6 +33,12 @@ function SearchVideo({ setSearchedVideo, setMode }) {
         setMode("search");
       });
   };
+  const searchHandler = (e) => {
+    if (e.keyCode === 13) {
+      handleSearchVideo();
+    }
+    return;
+  };
 
   return (
     <div className="search-video-container">
@@ -42,8 +48,11 @@ function SearchVideo({ setSearchedVideo, setMode }) {
           type="text"
           placeholder="search video"
           onChange={handleSearchVideoInput}
+          onKeyUp={searchHandler}
         ></input>
-        <button className="search-video-btn" onClick={handleSearchVideo}>검색</button>
+        <button className="search-video-btn" onClick={handleSearchVideo}>
+          검색
+        </button>
       </span>
     </div>
   );
