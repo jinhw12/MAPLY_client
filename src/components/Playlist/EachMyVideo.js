@@ -10,9 +10,15 @@ function EachMyVideo({
   eachPlaylist,
   setPlaylistPlayer,
   currentPlaylist,
+  setCurrentPlaylist,
+  accessToken,
+  getPlaylist,
+  setPlaylist,
+  userInfo,
+  getVideo,
 }) {
   const history = useHistory();
-  const { title, thumbnail, video_id } = video;
+  const { title, thumbnail, video_id, id } = video;
   const myVideo = {
     snippet: {
       title,
@@ -36,12 +42,31 @@ function EachMyVideo({
     setMode("play");
     history.push("/");
   };
+
+  const deleteVideo = () => {
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/video/${id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("delete video : ", res);
+        getPlaylist();
+      })
+      .then((res) => {
+        getVideo();
+      });
+  };
+
   return (
     <>
       <div onClick={handleClickVideo}>
         <img src={thumbnail}></img>
         <div>{title}</div>
       </div>
+      <button onClick={deleteVideo}>delete</button>
     </>
   );
 }
