@@ -37,7 +37,10 @@ function TrendVideoList({ setCurrentVideo, setMode, setComments }) {
 
   return (
     <>
-      <div>
+      <div className="trend-video-banner">
+        Trend Video
+      </div>
+      <div className="trend-video-list">
         {
           trendVideos.map((video, rank) => <TrendVideo
             video={video}
