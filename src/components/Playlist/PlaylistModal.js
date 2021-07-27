@@ -14,6 +14,11 @@ function PlaylistModal({
 }) {
   const [openAddPlaylist, setOpenAddPlaylist] = useState(false);
 
+  const handleCloseModal = () => {
+    setOpenPlaylistModal(false);
+    setOpenAddPlaylist(false);
+  };
+
   const addVideo = (playlist_id) => {
     axios
       .post(
@@ -51,17 +56,11 @@ function PlaylistModal({
           openPlaylistModal ? "show" : ""
         }`}
       >
-        <div
-          className="playlist-modal-outsider"
-          onClick={() => setOpenPlaylistModal(false)}
-        />
+        <div className="playlist-modal-outsider" onClick={handleCloseModal} />
         <div className="playlist-modal-content">
           <div>
             저장하기
-            <span
-              className="playlist-modal-close"
-              onClick={() => setOpenPlaylistModal(false)}
-            >
+            <span className="playlist-modal-close" onClick={handleCloseModal}>
               X
             </span>
             <hr></hr>

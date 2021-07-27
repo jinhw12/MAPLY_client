@@ -10,6 +10,8 @@ function Mypage({
   setMode,
   setComments,
   setPlaylistPlayer,
+  getPlaylist,
+  setPlaylist,
 }) {
   return (
     <div>
@@ -32,6 +34,9 @@ function Mypage({
         setMode={setMode}
         setComments={setComments}
         setPlaylistPlayer={setPlaylistPlayer}
+        getPlaylist={getPlaylist}
+        setPlaylist={setPlaylist}
+        userInfo={userInfo}
       />
     </div>
   );
