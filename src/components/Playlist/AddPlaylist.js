@@ -53,17 +53,22 @@ function AddPlaylist({
 
   return (
     <div className={`add-playlist background ${openAddPlaylist ? "show" : ""}`}>
-      <div>이름</div>
-      <input
-        type="text"
-        placeholder="재생목록 이름을 입력하세요."
-        onChange={handlePlaylistName}
-        ref={playlistNameInput}
-      ></input>
-      <div>
-        <button onClick={addNewPlaylist}>만들기</button>
+      <div className="add-playlist-modal">
+        <div>
+          <input
+            type="text"
+            className="playlist-name-input"
+            placeholder="재생목록 이름을 입력하세요."
+            onChange={handlePlaylistName}
+            ref={playlistNameInput}
+          />
+          <div className="playlist-name-btn-box">
+            <button className="playlist-btn orange" onClick={addNewPlaylist}>Create</button>
+            <button className="playlist-btn gray" onClick={() => { setOpenAddPlaylist(false) }}>Return</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </div >
   );
 }
 

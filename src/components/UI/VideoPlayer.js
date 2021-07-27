@@ -34,7 +34,7 @@ function VideoPlayer({
               <div>{currentVideo.snippet.title}</div>
               <i
                 title="플레이리스트 추가"
-                class="fas fa-plus"
+                className="fas fa-plus open-playlist-btn"
                 onClick={() => setOpenPlaylistModal(true)}
               />
             </div>
