@@ -39,22 +39,29 @@
   background-color: rgb(232, 0, 0);
 }
 
-.search-video-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.search {
+  position: relative;
+  text-align: center;
+  padding: 2em 0;
+}
+.search_inner {
+  width: 30%;
+  position: relative;
+  margin: auto;
 }
 
-.search-video-input {
+.search-video-input[type="search"] {
+  text-indent: 2em;
+  font-size: 1.7em;
+  padding: 0.4em 0;
   width: 100%;
-  font-size: 1rem;
-  height: auto;
-  padding: 0.8em 0.8em;
-  border: 1px solid #999;
-  border-radius: 0px;
-  outline-style: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+}
+
+.fa-search {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  color: rgb(135, 135, 135);
 }
