@@ -3,7 +3,7 @@ import Login from "../User/Login";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import logo from "../../images/maply_logo.png";
-import "./Nav.css";
+import "./UI.css";
 
 function Nav({ setKakao, accessToken, clickLogout, setMode }) {
   const history = useHistory();
