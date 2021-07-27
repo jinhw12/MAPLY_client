@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import TrendVideo from './TrendVideo';
+import TrendVideo from "./TrendVideo";
 import axios from "axios";
 
-function TrendVideoList({ setCurrentVideo, setMode, setComments }) {
+function TrendVideoList({
+  setCurrentVideo,
+  setMode,
+  setComments,
+  setTrendVideoPlayer,
+}) {
   useEffect(() => {
     if (trendVideos.length === 0) {
       getTrendVideos();
     }
-  }, [])
+  }, []);
 
   const [trendVideos, setTrendVideos] = useState([]);
 
@@ -47,8 +52,11 @@ function TrendVideoList({ setCurrentVideo, setMode, setComments }) {
             rank={rank}
             setCurrentVideo={setCurrentVideo}
             setMode={setMode}
-            setComments={setComments} />)
-        }
+            setComments={setComments}
+            setTrendVideoPlayer={setTrendVideoPlayer}
+            trendVideos={trendVideos}
+          />
+        ))}
       </div>
     </>
   );

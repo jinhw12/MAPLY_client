@@ -132,6 +132,7 @@ function App() {
                 setMode={setMode}
                 setComments={setComments}
                 setPlaylistPlayer={setPlaylistPlayer}
+                getPlaylist={getPlaylist}
               />
             </Route>
           </Switch>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EachMyVideo from "./EachMyVideo";
 
 function EachPlaylist({
@@ -44,6 +44,12 @@ function EachPlaylist({
     setIsChecked(!isChecked);
     handleCheckedPlaylist(e.target.checked, id);
   };
+
+  useEffect(() => {
+    if (showCheckbox) {
+      setIsChecked(false);
+    }
+  }, [showCheckbox]);
 
   return (
     <>

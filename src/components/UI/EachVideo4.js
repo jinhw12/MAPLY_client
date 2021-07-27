@@ -1,15 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-function TrendVideo({
-  video,
-  rank,
-  setCurrentVideo,
-  setMode,
-  setComments,
-  setTrendVideoPlayer,
-  trendVideos,
-}) {
+function EachVideo2({ video, setCurrentVideo, setComments }) {
   const trendVideo = {
     snippet: {
       title: video.snippet.title,
@@ -27,27 +19,19 @@ function TrendVideo({
         `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video.id}&maxResults=50`
       )
       .then((res) => {
-        console.log("trendvideo comments : ", res.data);
         setCurrentVideo(trendVideo);
         setComments(res.data.items);
-        setTrendVideoPlayer(trendVideos);
-        setMode("play");
       });
   };
-  // video.snippet.title
+
   return (
     <>
-      <div onClick={handleClickVideo} className="trend-video-wrapper">
-        <div className="trend-video-container">
-          <img className="trend-video-img" src={video.snippet.thumbnails.medium.url} />
-          <div className="trend-video-title">
-            <div>Trending #{rank + 1}</div>
-            <div>{video.snippet.title}</div>
-          </div>
-        </div>
+      <div onClick={handleClickVideo}>
+        <img src={video.snippet.thumbnails.medium.url}></img>
+        <div>{video.snippet.title}</div>
       </div>
     </>
   );
 }
 
-export default TrendVideo;
+export default EachVideo2;
