@@ -56,7 +56,7 @@ function TrendVideoList({
             setTrendVideoPlayer={setTrendVideoPlayer}
             trendVideos={trendVideos}
           />
-          )}
+        ))}
       </div>
     </>
   );

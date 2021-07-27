@@ -36,6 +36,7 @@ function SearchVideo({ setSearchedVideo, setMode }) {
           setMode("search");
         });
     }
+  }
 
   return (
     <div class="search">
