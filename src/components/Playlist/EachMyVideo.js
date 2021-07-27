@@ -34,7 +34,7 @@ function EachMyVideo({
   };
   const handleClickVideo = async () => {
     const result = await axios.get(
-      `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video_id}&maxResults=50`
+      `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video_id}&maxResults=30`
     );
     setComments(result.data.items);
     setCurrentVideo(myVideo);
