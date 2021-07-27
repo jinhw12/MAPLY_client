@@ -31,13 +31,16 @@ function SearchVideo({ setSearchedVideo, setMode }) {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="search video"
-        onChange={handleSearchVideoInput}
-      ></input>
-      <button onClick={handleSearchVideo}>검색</button>
+    <div className="search-video-container">
+      <span>
+        <input
+          className="search-video-input"
+          type="text"
+          placeholder="search video"
+          onChange={handleSearchVideoInput}
+        ></input>
+        <button className="search-video-btn" onClick={handleSearchVideo}>검색</button>
+      </span>
     </div>
   );
 }

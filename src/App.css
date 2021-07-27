@@ -10,6 +10,18 @@ body {
   min-width: 320px;
 }
 
+.wrapper-flex {
+  width: 100vw;
+  min-width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-container {
+  width: 70vw;
+}
+
 .background {
   display: none;
 }

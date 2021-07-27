@@ -100,38 +100,42 @@ function App() {
         accessToken={accessToken}
         clickLogout={clickLogout}
       />
-      <Switch>
-        <Route exact path="/">
-          <MainPage
-            accessToken={accessToken}
-            userInfo={userInfo}
-            playlist={playlist}
-            setAccessToken={setAccessToken}
-            setUserInfo={setUserInfo}
-            setPlaylist={setPlaylist}
-            setKakao={setKakao}
-            getPlaylist={getPlaylist}
-            currentVideo={currentVideo}
-            setCurrentVideo={setCurrentVideo}
-            mode={mode}
-            setMode={setMode}
-            comments={comments}
-            setComments={setComments}
-            playlistPlayer={playlistPlayer}
-          />
-        </Route>
-        <Route path="/mypage">
-          <Mypage
-            accessToken={accessToken}
-            userInfo={userInfo}
-            playlist={playlist}
-            setCurrentVideo={setCurrentVideo}
-            setMode={setMode}
-            setComments={setComments}
-            setPlaylistPlayer={setPlaylistPlayer}
-          />
-        </Route>
-      </Switch>
+      <div className="wrapper-flex">
+        <div className="page-container">
+          <Switch>
+            <Route exact path="/">
+              <MainPage
+                accessToken={accessToken}
+                userInfo={userInfo}
+                playlist={playlist}
+                setAccessToken={setAccessToken}
+                setUserInfo={setUserInfo}
+                setPlaylist={setPlaylist}
+                setKakao={setKakao}
+                getPlaylist={getPlaylist}
+                currentVideo={currentVideo}
+                setCurrentVideo={setCurrentVideo}
+                mode={mode}
+                setMode={setMode}
+                comments={comments}
+                setComments={setComments}
+                playlistPlayer={playlistPlayer}
+              />
+            </Route>
+            <Route path="/mypage">
+              <Mypage
+                accessToken={accessToken}
+                userInfo={userInfo}
+                playlist={playlist}
+                setCurrentVideo={setCurrentVideo}
+                setMode={setMode}
+                setComments={setComments}
+                setPlaylistPlayer={setPlaylistPlayer}
+              />
+            </Route>
+          </Switch>
+        </div>
+      </div>
     </Router>
   );
 }
