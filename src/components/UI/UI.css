@@ -24,7 +24,6 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  border-radius: 6px;
   font-weight: 800;
   font-size: 1rem;
   box-shadow: 0px 2px 2px 1px rgba(84, 84, 84, 0.4);
@@ -170,7 +169,7 @@
   font-size: 1.3rem;
 }
 
-.fa-plus {
+.open-playlist-btn {
   position: absolute;
   cursor: pointer;
   right: 20px;
