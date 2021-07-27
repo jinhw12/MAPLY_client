@@ -42,12 +42,10 @@ function TrendVideoList({
 
   return (
     <>
-      <div className="trend-video-banner">
-        Trend Video
-      </div>
+      <div className="trend-video-banner">Trend Video</div>
       <div className="trend-video-list">
-        {
-          trendVideos.map((video, rank) => <TrendVideo
+        {trendVideos.map((video, rank) => (
+          <TrendVideo
             video={video}
             rank={rank}
             setCurrentVideo={setCurrentVideo}

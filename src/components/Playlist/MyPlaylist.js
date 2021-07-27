@@ -42,8 +42,8 @@ function MyPlaylist({
   };
 
   return (
-    <div className="mypage-playlist">
-      <div>
+    <div className="playlist-section">
+      <div className="myplaylist">
         My Playlist
         {playlist.length > 0 && (
           <>

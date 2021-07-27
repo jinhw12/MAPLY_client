@@ -20,8 +20,7 @@ function SearchVideo({ setSearchedVideo, setMode }) {
   const handleSearchVideo = (e) => {
     if (searchVideoInput.length === 0) {
       return;
-    }
-    else if (e.keyCode === 13 || e.type === "click") {
+    } else if (e.keyCode === 13 || e.type === "click") {
       youtube
         .get("/search", {
           params: {
@@ -29,11 +28,14 @@ function SearchVideo({ setSearchedVideo, setMode }) {
           },
         })
         .then((res) => {
-          setSearchedVideo(res.data.items);
+          setSearchedVideo(
+            res.data.items.filter((video) =>
+              Object.keys(video.id).includes("videoId")
+            )
+          );
           setMode("search");
         });
     }
-
   };
   const searchHandler = (e) => {
     if (e.keyCode === 13) {
@@ -45,7 +47,11 @@ function SearchVideo({ setSearchedVideo, setMode }) {
   return (
     <div class="search">
       <div class="search_inner">
-        <i class="fa fa-search" aria-hidden="true" onClick={handleSearchVideo} />
+        <i
+          class="fa fa-search"
+          aria-hidden="true"
+          onClick={handleSearchVideo}
+        />
         <input
           className="search-video-input search-field"
           type="search"
