@@ -22,6 +22,7 @@ function MainPage({
   playlistPlayer,
 }) {
   const [searchedVideo, setSearchedVideo] = useState("");
+  const [trendVideoPlayer, setTrendVideoPlayer] = useState([]);
 
   return (
     <>
@@ -40,6 +41,7 @@ function MainPage({
           getPlaylist={getPlaylist}
           accessToken={accessToken}
           playlistPlayer={playlistPlayer}
+          trendVideoPlayer={trendVideoPlayer}
         />
       ) : mode === "search" ? (
         <VideoList
@@ -54,6 +56,7 @@ function MainPage({
           setCurrentVideo={setCurrentVideo}
           setMode={setMode}
           setComments={setComments}
+          setTrendVideoPlayer={setTrendVideoPlayer}
         />
       )}
     </>

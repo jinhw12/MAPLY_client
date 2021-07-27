@@ -21,7 +21,7 @@ function Nav({ setKakao, accessToken, clickLogout, setMode }) {
     <div className="nav-container">
       <img className="nav-logo" src={logo} onClick={() => history.push("/")} />
       <div className="nav-btn-container">
-        <button className="nav-btn yellow" onClick={() => history.push("/")}>
+        <button className="nav-btn yellow" onClick={clickHome}>
           HOME
         </button>
         {accessToken.length > 0 ? (

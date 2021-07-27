@@ -25,7 +25,11 @@ function SearchVideo({ setSearchedVideo, setMode }) {
         },
       })
       .then((res) => {
-        setSearchedVideo(res.data.items);
+        setSearchedVideo(
+          res.data.items.filter((video) =>
+            Object.keys(video.id).includes("videoId")
+          )
+        );
         setMode("search");
       });
   };

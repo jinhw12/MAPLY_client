@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import EachVideo2 from "./EachVideo2";
 import EachVideo3 from "./EachVideo3";
+import EachVideo4 from "./EachVideo4";
 import PlaylistModal from "../Playlist/PlaylistModal";
 
 function VideoPlayer({
@@ -17,9 +18,9 @@ function VideoPlayer({
   getPlaylist,
   accessToken,
   playlistPlayer,
+  trendVideoPlayer,
 }) {
   const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
-  console.log("currentVideo : ", currentVideo);
   return (
     <>
       <div className="video-player">
@@ -48,23 +49,38 @@ function VideoPlayer({
         </div>
         <div className="list-section">
           {searchedVideo.length > 0 &&
-            searchedVideo.map((video) => (
-              <EachVideo2
-                video={video}
-                key={video.etag}
-                setCurrentVideo={setCurrentVideo}
-                setComments={setComments}
-              ></EachVideo2>
-            ))}
+            searchedVideo
+              .filter((video) => video.id.videoId !== currentVideo.id.videoId)
+              .map((video) => (
+                <EachVideo2
+                  video={video}
+                  key={video.id.videoId}
+                  setCurrentVideo={setCurrentVideo}
+                  setComments={setComments}
+                ></EachVideo2>
+              ))}
           {playlistPlayer.length > 0 &&
-            playlistPlayer.map((video) => (
-              <EachVideo3
-                video={video}
-                key={video.id}
-                setCurrentVideo={setCurrentVideo}
-                setComments={setComments}
-              />
-            ))}
+            playlistPlayer
+              .filter((video) => video.video_id !== currentVideo.id.videoId)
+              .map((video) => (
+                <EachVideo3
+                  video={video}
+                  key={video.id}
+                  setCurrentVideo={setCurrentVideo}
+                  setComments={setComments}
+                />
+              ))}
+          {trendVideoPlayer.length > 0 &&
+            trendVideoPlayer
+              .filter((video) => video.id !== currentVideo.id.videoId)
+              .map((video) => (
+                <EachVideo4
+                  video={video}
+                  key={video.id.videoId}
+                  setCurrentVideo={setCurrentVideo}
+                  setComments={setComments}
+                />
+              ))}
         </div>
       </div>
       <PlaylistModal
