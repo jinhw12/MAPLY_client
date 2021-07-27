@@ -6,7 +6,6 @@ function PlaylistModal({
   openPlaylistModal,
   setOpenPlaylistModal,
   playlist,
-  setPlaylist,
   currentVideo,
   userInfo,
   getPlaylist,

@@ -43,7 +43,7 @@ function TrendVideoList({
   return (
     <>
       <div className="trend-video-banner">
-        Trend Video
+        Trending Videos
       </div>
       <div className="trend-video-list">
         {
@@ -56,7 +56,7 @@ function TrendVideoList({
             setTrendVideoPlayer={setTrendVideoPlayer}
             trendVideos={trendVideos}
           />
-        ))}
+          )}
       </div>
     </>
   );

@@ -33,13 +33,6 @@ function SearchVideo({ setSearchedVideo, setMode }) {
           setMode("search");
         });
     }
-
-  };
-  const searchHandler = (e) => {
-    if (e.keyCode === 13) {
-      handleSearchVideo();
-    }
-    return;
   };
 
   return (
