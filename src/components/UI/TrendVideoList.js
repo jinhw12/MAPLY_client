@@ -46,8 +46,8 @@ function TrendVideoList({
         Trending Videos
       </div>
       <div className="trend-video-list">
-        {
-          trendVideos.map((video, rank) => <TrendVideo
+        {trendVideos.map((video, rank) => (
+          <TrendVideo
             video={video}
             rank={rank}
             setCurrentVideo={setCurrentVideo}

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MyPlaylist from "../components/Playlist/MyPlaylist";
+import "../components/Playlist/Playlist.css";
 
 function Mypage({
   accessToken,
@@ -15,16 +16,25 @@ function Mypage({
 }) {
   return (
     <div>
-      <div>MY PAGE</div>
-      <hr></hr>
-      <div className="userinfo">
+      <div className="profile-section">
         <div>
-          <span>username</span>
-          <span>{userInfo.username}</span>
+          <div className="profile-title">Profile</div>
+          <hr></hr>
         </div>
-        <div>
-          <span>email</span>
-          <span>{userInfo.email}</span>
+        <div className="userinfo">
+          <div className="profile-icon">
+            <i class="fas fa-user-circle fa-5x"></i>
+          </div>
+          <div className="information">
+            <div>
+              <span className="name">Name</span>
+              <span className="user-name">{userInfo.username}</span>
+            </div>
+            <div>
+              <span className="name">Email</span>
+              <span className="user-name">{userInfo.email}</span>
+            </div>
+          </div>
         </div>
       </div>
       <MyPlaylist
