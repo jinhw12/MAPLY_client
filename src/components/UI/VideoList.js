@@ -15,7 +15,7 @@ function VideoList({
           <EachVideo
             video={video}
             key={video.etag}
-            setCurrentVideo={setCurrentVideo}
+            setCurrentVideo={setCurrentVideo}z2
             setMode={setMode}
             setComments={setComments}
           />

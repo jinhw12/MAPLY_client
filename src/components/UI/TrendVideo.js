@@ -34,13 +34,17 @@ function TrendVideo({
         setMode("play");
       });
   };
-
+  // video.snippet.title
   return (
     <>
-      <div onClick={handleClickVideo}>
-        <div>Trending #{rank + 1}</div>
-        <img src={video.snippet.thumbnails.medium.url}></img>
-        <div>{video.snippet.title}</div>
+      <div onClick={handleClickVideo} className="trend-video-wrapper">
+        <div className="trend-video-container">
+          <img className="trend-video-img" src={video.snippet.thumbnails.medium.url} />
+          <div className="trend-video-title">
+            <div>Trending #{rank + 1}</div>
+            <div>{video.snippet.title}</div>
+          </div>
+        </div>
       </div>
     </>
   );

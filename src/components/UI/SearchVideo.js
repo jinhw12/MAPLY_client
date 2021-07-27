@@ -17,21 +17,23 @@ function SearchVideo({ setSearchedVideo, setMode }) {
     },
   });
 
-  const handleSearchVideo = () => {
-    youtube
-      .get("/search", {
-        params: {
-          q: searchVideoInput,
-        },
-      })
-      .then((res) => {
-        setSearchedVideo(
-          res.data.items.filter((video) =>
-            Object.keys(video.id).includes("videoId")
-          )
-        );
-        setMode("search");
-      });
+  const handleSearchVideo = (e) => {
+    if (searchVideoInput.length === 0) {
+      return;
+    }
+    else if (e.keyCode === 13 || e.type === "click") {
+      youtube
+        .get("/search", {
+          params: {
+            q: searchVideoInput,
+          },
+        })
+        .then((res) => {
+          setSearchedVideo(res.data.items);
+          setMode("search");
+        });
+    }
+
   };
   const searchHandler = (e) => {
     if (e.keyCode === 13) {
@@ -41,19 +43,17 @@ function SearchVideo({ setSearchedVideo, setMode }) {
   };
 
   return (
-    <div className="search-video-container">
-      <span>
+    <div class="search">
+      <div class="search_inner">
+        <i class="fa fa-search" aria-hidden="true" onClick={handleSearchVideo} />
         <input
-          className="search-video-input"
-          type="text"
+          className="search-video-input search-field"
+          type="search"
           placeholder="search video"
           onChange={handleSearchVideoInput}
-          onKeyUp={searchHandler}
-        ></input>
-        <button className="search-video-btn" onClick={handleSearchVideo}>
-          검색
-        </button>
-      </span>
+          onKeyUp={handleSearchVideo}
+        />
+      </div>
     </div>
   );
 }
