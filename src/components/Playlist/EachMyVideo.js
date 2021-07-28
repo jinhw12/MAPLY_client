@@ -7,7 +7,6 @@ function EachMyVideo({
   setCurrentVideo,
   setMode,
   setComments,
-  eachPlaylist,
   setPlaylistPlayer,
   currentPlaylist,
   setCurrentPlaylist,
@@ -15,7 +14,7 @@ function EachMyVideo({
   getPlaylist,
   setPlaylist,
   userInfo,
-  getVideo,
+  currentPlaylistInfo,
 }) {
   const history = useHistory();
   const { title, thumbnail, video_id, id } = video;
@@ -51,23 +50,43 @@ function EachMyVideo({
         },
         withCredentials: true,
       })
-      .then((res) => {
+      .then(async (res) => {
         console.log("delete video : ", res);
-        getPlaylist();
-      })
-      .then((res) => {
+        await getPlaylist();
         getVideo();
+      });
+  };
+  const getVideo = () => {
+    console.log(accessToken);
+    axios
+      .get(
+        `${process.env.REACT_APP_SERVER_URL}/video/${currentPlaylistInfo.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log("get video after delete: ", res.data);
+        setCurrentPlaylist(res.data);
       });
   };
 
   return (
-    <>
-      <div onClick={handleClickVideo}>
-        <img src={thumbnail}></img>
-        <div>{title}</div>
+    <div>
+      <div className="each-myvideo" onClick={handleClickVideo}>
+        <img className="myvideo-thumbnail" src={thumbnail}></img>
+        <div className="myvideo-title">{title}</div>
+        <div>
+          <div onClick={deleteVideo}>
+            <i class="far fa-trash-alt"></i>
+          </div>
+        </div>
       </div>
-      <button onClick={deleteVideo}>delete</button>
-    </>
+      <hr></hr>
+    </div>
   );
 }
 

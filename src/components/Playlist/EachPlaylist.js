@@ -14,13 +14,20 @@ function EachPlaylist({
   getPlaylist,
   setPlaylist,
   userInfo,
+  setCurrentPlaylist,
+  setCurrentPlaylistInfo,
 }) {
   const { playlist_name, count, playlist_thumbnail, id } = eachPlaylist;
-  const [currentPlaylist, setCurrentPlaylist] = useState([]);
+
   const [isShow, setIsShow] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
   const getVideo = () => {
+    const playlistInfo = {
+      playlist_name,
+      id,
+    };
+    setCurrentPlaylistInfo(playlistInfo);
     setIsShow(true);
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/video/${id}`, {
@@ -53,9 +60,9 @@ function EachPlaylist({
 
   return (
     <>
-      <div>
+      <div className="each-playlist" onClick={getVideo}>
         {showCheckbox && (
-          <div>
+          <div className="checkbox">
             <input
               type="checkbox"
               onChange={handleChecked}
@@ -63,35 +70,15 @@ function EachPlaylist({
             />
           </div>
         )}
-        <div className="playlist-thumbnail">
-          <img src={playlist_thumbnail}></img>
+        <div>
+          <div className="playlist-title">
+            <div className="playlist-name">{playlist_name}</div>
+            <div className="count">{`${count}개의 비디오`}</div>
+          </div>
+          <div>
+            <img className="playlist-thumbnail" src={playlist_thumbnail}></img>
+          </div>
         </div>
-        <div className="playlist-title">
-          <div>{playlist_name}</div>
-          <div>{`${count}개의 비디오`}</div>
-          <button onClick={isShow ? hideVideo : getVideo}>
-            {isShow ? "hide" : "show"}
-          </button>
-        </div>
-        {currentPlaylist.length > 0 &&
-          currentPlaylist.map((video) => (
-            <EachMyVideo
-              key={video.id}
-              video={video}
-              setCurrentVideo={setCurrentVideo}
-              setMode={setMode}
-              setComments={setComments}
-              eachPlaylist={eachPlaylist}
-              setPlaylistPlayer={setPlaylistPlayer}
-              currentPlaylist={currentPlaylist}
-              setCurrentPlaylist={setCurrentPlaylist}
-              getPlaylist={getPlaylist}
-              accessToken={accessToken}
-              setPlaylist={setPlaylist}
-              userInfo={userInfo}
-              getVideo={getVideo}
-            />
-          ))}
       </div>
     </>
   );
