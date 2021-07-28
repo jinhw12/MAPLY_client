@@ -19,7 +19,9 @@ function VideoPlayer({
   playlistPlayer,
   trendVideoPlayer,
 }) {
+
   const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
+
   return (
     <>
       <div className="video-player-wrapper">
@@ -40,13 +42,15 @@ function VideoPlayer({
             </div>
           </div>
           <div className="comments-container">
+            <div className="comment-banner">
+              Recent Comments
+            </div>
             <ul>
               {comments.map((comment) => (
-                <li style={{ listStyleType: "none" }}>
-                  <div>
-                    {comment.snippet.topLevelComment.snippet.textDisplay}
+                <li className="each-comment-wrapper">
+                  <div className="each-comment-box">
+                    {comment}
                   </div>
-                  <hr></hr>
                 </li>
               ))}
             </ul>
