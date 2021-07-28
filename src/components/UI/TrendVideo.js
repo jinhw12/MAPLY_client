@@ -24,12 +24,13 @@ function TrendVideo({
   const handleClickVideo = () => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video.id}&maxResults=30`
+        `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video.id}&maxResults=15`
       )
       .then((res) => {
         console.log("trendvideo comments : ", res.data);
+        const comments = res.data.items.map(comment => comment.snippet.topLevelComment.snippet.textDisplay);
+        setComments(comments);
         setCurrentVideo(trendVideo);
-        setComments(res.data.items);
         setTrendVideoPlayer(trendVideos);
         setMode("play");
       });

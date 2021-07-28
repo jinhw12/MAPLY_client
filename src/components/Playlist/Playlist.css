@@ -103,3 +103,9 @@
 .gray {
   background-color: rgb(170, 170, 170);
 }
+
+.video-list-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
