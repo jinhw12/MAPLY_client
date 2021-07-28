@@ -184,3 +184,25 @@
   align-items: center;
   justify-content: center;
 }
+.edit-del-btn {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+}
+.fa-window-close {
+  font-size: 1.3rem;
+  margin-right: 10px;
+  opacity: 70%;
+}
+.fa-pencil-alt {
+  font-size: 1.3rem;
+  opacity: 70%;
+}
+.delete-btn {
+  font-size: 1.3rem;
+  opacity: 70%;
+}
+.del-myvideo {
+  opacity: 70%;
+  margin-right: 10px;
+}

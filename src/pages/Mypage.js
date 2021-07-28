@@ -72,17 +72,25 @@ function Mypage({
       <div className="myplaylist">
         <div className="myplaylist-title">My Playlist</div>
         {playlist.length > 0 && (
-          <div>
-            <button
+          <div className="edit-del-btn">
+            <div
               onClick={
                 showCheckbox
                   ? () => setShowCheckbox(false)
                   : () => setShowCheckbox(true)
               }
             >
-              {showCheckbox ? "cancel" : "edit"}
-            </button>
-            {showCheckbox && <button onClick={deletePlaylist}>delete</button>}
+              {showCheckbox ? (
+                <i class="far fa-window-close"></i>
+              ) : (
+                <i class="fas fa-pencil-alt"></i>
+              )}
+            </div>
+            {showCheckbox && (
+              <div onClick={deletePlaylist}>
+                <i class="far fa-trash-alt delete-btn"></i>
+              </div>
+            )}
           </div>
         )}
       </div>

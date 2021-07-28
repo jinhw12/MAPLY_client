@@ -17,6 +17,8 @@ function MainPage({
   comments,
   setComments,
   playlistPlayer,
+  loginHandler,
+  setPlaylistPlayer,
 }) {
   const [searchedVideo, setSearchedVideo] = useState("");
   const [trendVideoPlayer, setTrendVideoPlayer] = useState([]);
@@ -39,6 +41,7 @@ function MainPage({
           accessToken={accessToken}
           playlistPlayer={playlistPlayer}
           trendVideoPlayer={trendVideoPlayer}
+          loginHandler={loginHandler}
         />
       ) : mode === "search" ? (
         <VideoList
@@ -47,6 +50,8 @@ function MainPage({
           setMode={setMode}
           mode={mode}
           setComments={setComments}
+          setPlaylistPlayer={setPlaylistPlayer}
+          setTrendVideoPlayer={setTrendVideoPlayer}
         />
       ) : (
         <TrendVideoList
@@ -54,6 +59,8 @@ function MainPage({
           setMode={setMode}
           setComments={setComments}
           setTrendVideoPlayer={setTrendVideoPlayer}
+          setSearchedVideo={setSearchedVideo}
+          setPlaylistPlayer={setPlaylistPlayer}
         />
       )}
     </>

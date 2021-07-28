@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import AddPlaylist from "./AddPlaylist";
-import "./Playlist.css"
+import "./Playlist.css";
 
 function PlaylistModal({
   openPlaylistModal,
@@ -52,19 +52,28 @@ function PlaylistModal({
   return (
     <>
       <div
-        className={`playlist-modal background ${openPlaylistModal ? "show" : ""
-          }`}
+        className={`playlist-modal background ${
+          openPlaylistModal ? "show" : ""
+        }`}
       >
         <div className="playlist-modal-outsider" onClick={handleCloseModal} />
         <div className="playlist-modal-content">
           <div className="save-playlist-modal-title">
             Save
-            <i class="fas fa-times playlist-modal-close" onClick={handleCloseModal} />
+            <i
+              class="fas fa-times playlist-modal-close"
+              onClick={handleCloseModal}
+            />
           </div>
           <div>
             {playlist.length === 0 && !openAddPlaylist && (
               <>
-                <button onClick={() => setOpenAddPlaylist(true)}>+</button>
+                <div className="playlist-title-container">
+                  <i
+                    class="fas fa-plus add-playlist-btn"
+                    onClick={() => setOpenAddPlaylist(true)}
+                  />
+                </div>
               </>
             )}
             {playlist.length > 0 && !openAddPlaylist && (
@@ -83,7 +92,10 @@ function PlaylistModal({
                   ))}
                 </ul>
                 <div className="playlist-title-container">
-                  <i class="fas fa-plus add-playlist-btn" onClick={() => setOpenAddPlaylist(true)} />
+                  <i
+                    class="fas fa-plus add-playlist-btn"
+                    onClick={() => setOpenAddPlaylist(true)}
+                  />
                 </div>
               </div>
             )}

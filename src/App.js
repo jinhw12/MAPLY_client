@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import Mypage from "./pages/Mypage";
 import Nav from "./components/UI/Nav";
+import history from "./utils/history";
+
 const axios = require("axios");
 
 axios.interceptors.response.use(function (res) {
@@ -24,6 +26,9 @@ function App() {
   const [mode, setMode] = useState("default");
   const [comments, setComments] = useState("");
   const [playlistPlayer, setPlaylistPlayer] = useState([]);
+  const KAKAO_REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
+  const REDIRECT_URI = "http://localhost:3000";
+  const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
 
   useEffect(() => {
     clickLogin();
@@ -42,6 +47,17 @@ function App() {
     }
   }, [userInfo]);
 
+  const loginHandler = () => {
+    kakaoLogin(KAKAO_LOGIN_URL);
+  };
+  const kakaoLogin = (url) => {
+    try {
+      setKakao(true);
+      window.location.href = url;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const clickLogin = async () => {
     let code = new URL(window.location.href).searchParams.get("code");
     if (!code) {
@@ -75,6 +91,8 @@ function App() {
         setAccessToken("");
         setUserInfo({});
         localStorage.clear();
+        history.push("/");
+        window.location.reload();
       })
       .catch((e) => console.log(e));
   };
@@ -94,12 +112,13 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router history={history}>
       <Nav
         setKakao={setKakao}
         accessToken={accessToken}
         clickLogout={clickLogout}
         setMode={setMode}
+        loginHandler={loginHandler}
       />
       <div className="wrapper-flex">
         <div className="page-container">
@@ -121,6 +140,8 @@ function App() {
                 comments={comments}
                 setComments={setComments}
                 playlistPlayer={playlistPlayer}
+                loginHandler={loginHandler}
+                setPlaylistPlayer={setPlaylistPlayer}
               />
             </Route>
             <Route path="/mypage">

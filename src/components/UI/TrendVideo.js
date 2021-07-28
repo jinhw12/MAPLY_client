@@ -9,6 +9,8 @@ function TrendVideo({
   setComments,
   setTrendVideoPlayer,
   trendVideos,
+  setSearchedVideo,
+  setPlaylistPlayer,
 }) {
   const trendVideo = {
     snippet: {
@@ -28,10 +30,14 @@ function TrendVideo({
       )
       .then((res) => {
         console.log("trendvideo comments : ", res.data);
-        const comments = res.data.items.map(comment => comment.snippet.topLevelComment.snippet.textDisplay);
+        const comments = res.data.items.map(
+          (comment) => comment.snippet.topLevelComment.snippet.textDisplay
+        );
         setComments(comments);
         setCurrentVideo(trendVideo);
         setTrendVideoPlayer(trendVideos);
+        setSearchedVideo([]);
+        setPlaylistPlayer([]);
         setMode("play");
       });
   };
@@ -40,7 +46,10 @@ function TrendVideo({
     <>
       <div onClick={handleClickVideo} className="trend-video-wrapper">
         <div className="trend-video-container">
-          <img className="trend-video-img" src={video.snippet.thumbnails.medium.url} />
+          <img
+            className="trend-video-img"
+            src={video.snippet.thumbnails.medium.url}
+          />
           <div className="trend-video-title">
             <div>Trending #{rank + 1}</div>
             <div>{video.snippet.title}</div>

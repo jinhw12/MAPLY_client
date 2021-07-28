@@ -35,7 +35,9 @@ function EachMyVideo({
     const result = await axios.get(
       `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video_id}&maxResults=15`
     );
-    const comments = result.data.items.map(comment => comment.snippet.topLevelComment.snippet.textDisplay);
+    const comments = result.data.items.map(
+      (comment) => comment.snippet.topLevelComment.snippet.textDisplay
+    );
     setComments(comments);
     setCurrentVideo(myVideo);
     setPlaylistPlayer(currentPlaylist);
@@ -82,7 +84,7 @@ function EachMyVideo({
         <div className="myvideo-title">{title}</div>
         <div>
           <div onClick={deleteVideo}>
-            <i class="far fa-trash-alt"></i>
+            <i class="far fa-trash-alt del-myvideo"></i>
           </div>
         </div>
       </div>

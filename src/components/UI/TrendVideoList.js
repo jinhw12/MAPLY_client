@@ -7,6 +7,8 @@ function TrendVideoList({
   setMode,
   setComments,
   setTrendVideoPlayer,
+  setSearchedVideo,
+  setPlaylistPlayer,
 }) {
   useEffect(() => {
     if (trendVideos.length === 0) {
@@ -42,9 +44,7 @@ function TrendVideoList({
 
   return (
     <>
-      <div className="trend-video-banner">
-        Trending Videos
-      </div>
+      <div className="trend-video-banner">Trending Videos</div>
       <div className="trend-video-list">
         {trendVideos.map((video, rank) => (
           <TrendVideo
@@ -55,6 +55,8 @@ function TrendVideoList({
             setComments={setComments}
             setTrendVideoPlayer={setTrendVideoPlayer}
             trendVideos={trendVideos}
+            setSearchedVideo={setSearchedVideo}
+            setPlaylistPlayer={setPlaylistPlayer}
           />
         ))}
       </div>

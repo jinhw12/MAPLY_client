@@ -18,8 +18,8 @@ function VideoPlayer({
   accessToken,
   playlistPlayer,
   trendVideoPlayer,
+  loginHandler,
 }) {
-
   const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
 
   return (
@@ -37,20 +37,22 @@ function VideoPlayer({
               <i
                 title="플레이리스트 추가"
                 className="fas fa-plus open-playlist-btn"
-                onClick={() => setOpenPlaylistModal(true)}
+                onClick={() => {
+                  if (accessToken.length > 0) {
+                    setOpenPlaylistModal(true);
+                  } else {
+                    loginHandler();
+                  }
+                }}
               />
             </div>
           </div>
           <div className="comments-container">
-            <div className="comment-banner">
-              Recent Comments
-            </div>
+            <div className="comment-banner">Recent Comments</div>
             <ul>
               {comments.map((comment) => (
                 <li className="each-comment-wrapper">
-                  <div className="each-comment-box">
-                    {comment}
-                  </div>
+                  <div className="each-comment-box">{comment}</div>
                 </li>
               ))}
             </ul>

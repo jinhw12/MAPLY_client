@@ -7,6 +7,8 @@ function VideoList({
   setMode,
   mode,
   setComments,
+  setPlaylistPlayer,
+  setTrendVideoPlayer,
 }) {
   return (
     <>
@@ -19,6 +21,8 @@ function VideoList({
               setCurrentVideo={setCurrentVideo}
               setMode={setMode}
               setComments={setComments}
+              setPlaylistPlayer={setPlaylistPlayer}
+              setTrendVideoPlayer={setTrendVideoPlayer}
             />
           ))}
         </div>
