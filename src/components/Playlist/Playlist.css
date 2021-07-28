@@ -1,0 +1,208 @@
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 30vh;
+}
+
+.profile-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 25px 0 15px 0;
+  height: 25vh;
+}
+
+.fa-user-circle {
+  opacity: 30%;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20px;
+  height: 5vh;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 1.5vh;
+  color: rgb(128, 128, 128);
+}
+
+.user-name {
+  font-size: 1.2rem;
+}
+.myplaylist {
+  display: flex;
+  justify-content: space-between;
+}
+.myplaylist-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.playlist-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5vh 3vw;
+}
+.myplaylist-section {
+  margin: 0 10vw 0 5vw;
+}
+.each-playlist {
+  display: flex;
+  margin-bottom: 15px;
+}
+.playlist-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.playlist-name {
+  font-size: 1.2rem;
+}
+.count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 8px;
+  opacity: 50%;
+}
+.playlist-thumbnail {
+  width: 15vw;
+}
+.myvideos-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.myvideos-playlist-name {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+.each-myvideo {
+  display: flex;
+  margin: 10px 0;
+  justify-content: space-between;
+}
+.myvideo-thumbnail {
+  width: 10vw;
+}
+.myvideo-title {
+  padding: 0 20px;
+  width: 15vw;
+}
+.eachvideo-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 600px;
+  overflow: auto;
+  margin-bottom: 20px;
+}
+.checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 20px 0 0;
+}
+
+.playlist-modal-close {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: rgb(253, 99, 99);
+}
+
+.add-playlist-btn {
+  font-size: 0.9rem;
+  color: rgb(149, 149, 149);
+  cursor: pointer;
+}
+
+.add-playlist-modal {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.playlist-name-input {
+  font-size: 1rem;
+  padding: 1rem 1.2rem;
+  width: 350px;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+
+.playlist-name-btn-box {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.playlist-btn {
+  border: none;
+  color: white;
+  padding: 9px 16px;
+  margin: 0 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 800;
+  font-size: 0.8rem;
+  box-shadow: 0px 2px 2px 1px rgba(84, 84, 84, 0.4);
+  cursor: pointer;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.gray {
+  background-color: rgb(170, 170, 170);
+}
+
+.video-list-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-del-btn {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+}
+.fa-window-close {
+  font-size: 1.3rem;
+  margin-right: 10px;
+  opacity: 70%;
+}
+.fa-pencil-alt {
+  font-size: 1.3rem;
+  opacity: 70%;
+}
+.delete-btn {
+  font-size: 1.3rem;
+  opacity: 70%;
+}
+.del-myvideo {
+  opacity: 70%;
+  margin-right: 10px;
+}
