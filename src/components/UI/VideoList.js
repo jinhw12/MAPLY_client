@@ -10,16 +10,18 @@ function VideoList({
 }) {
   return (
     <>
-      <div className="video-list">
-        {searchedVideo.map((video) => (
-          <EachVideo
-            video={video}
-            key={video.etag}
-            setCurrentVideo={setCurrentVideo}z2
-            setMode={setMode}
-            setComments={setComments}
-          />
-        ))}
+      <div className="video-list-flex">
+        <div>
+          {searchedVideo.map((video) => (
+            <EachVideo
+              video={video}
+              key={video.etag}
+              setCurrentVideo={setCurrentVideo}
+              setMode={setMode}
+              setComments={setComments}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import AddPlaylist from "./AddPlaylist";
+import "./Playlist.css"
 
 function PlaylistModal({
   openPlaylistModal,
   setOpenPlaylistModal,
   playlist,
-  setPlaylist,
   currentVideo,
   userInfo,
   getPlaylist,
@@ -52,24 +52,19 @@ function PlaylistModal({
   return (
     <>
       <div
-        className={`playlist-modal background ${
-          openPlaylistModal ? "show" : ""
-        }`}
+        className={`playlist-modal background ${openPlaylistModal ? "show" : ""
+          }`}
       >
         <div className="playlist-modal-outsider" onClick={handleCloseModal} />
         <div className="playlist-modal-content">
-          <div>
-            저장하기
-            <span className="playlist-modal-close" onClick={handleCloseModal}>
-              X
-            </span>
-            <hr></hr>
+          <div className="save-playlist-modal-title">
+            Save
+            <i class="fas fa-times playlist-modal-close" onClick={handleCloseModal} />
           </div>
           <div>
             {playlist.length === 0 && !openAddPlaylist && (
               <>
                 <button onClick={() => setOpenAddPlaylist(true)}>+</button>
-                <div>새 플레이리스트 만들기</div>
               </>
             )}
             {playlist.length > 0 && !openAddPlaylist && (
@@ -77,20 +72,18 @@ function PlaylistModal({
                 <ul>
                   {playlist.map((each) => (
                     <li
+                      className="playlist-title-container"
                       style={{ listStyleType: "none" }}
                       onClick={() => {
                         addVideo(each.id);
                       }}
                     >
                       <div>{each.playlist_name}</div>
-                      <hr></hr>
                     </li>
                   ))}
                 </ul>
-                <hr />
-                <div>
-                  <button onClick={() => setOpenAddPlaylist(true)}>+</button>
-                  <div>새 플레이리스트 만들기</div>
+                <div className="playlist-title-container">
+                  <i class="fas fa-plus add-playlist-btn" onClick={() => setOpenAddPlaylist(true)} />
                 </div>
               </div>
             )}

@@ -19,19 +19,20 @@ function EachVideo3({ video, setCurrentVideo, setComments }) {
   const handleClickVideo = () => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video_id}&maxResults=50`
+        `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_YOUTUBE_API_KEY}&textFormat=plainText&part=snippet&videoId=${video_id}&maxResults=15`
       )
       .then((res) => {
-        setCurrentVideo(myVideo);
-        setComments(res.data.items);
+        const comments = res.data.items.map(comment => comment.snippet.topLevelComment.snippet.textDisplay);
+        setCurrentVideo(video);
+        setComments(comments);
       });
   };
 
   return (
     <>
-      <div onClick={handleClickVideo}>
-        <img src={video.thumbnail}></img>
-        <div>{video.title}</div>
+      <div className="sidebar-playlist" onClick={handleClickVideo}>
+        <img className="sidebar-video-img" src={video.thumbnail}></img>
+        <div className="sidebar-video-title">{video.title}</div>
       </div>
     </>
   );

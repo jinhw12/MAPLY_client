@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
 import EachVideo2 from "./EachVideo2";
 import EachVideo3 from "./EachVideo3";
 import EachVideo4 from "./EachVideo4";
 import PlaylistModal from "../Playlist/PlaylistModal";
+import "./UI.css";
 
 function VideoPlayer({
   currentVideo,
@@ -11,7 +11,6 @@ function VideoPlayer({
   searchedVideo,
   setCurrentVideo,
   setComments,
-  mode,
   playlist,
   setPlaylist,
   userInfo,
@@ -20,34 +19,47 @@ function VideoPlayer({
   playlistPlayer,
   trendVideoPlayer,
 }) {
+
   const [openPlaylistModal, setOpenPlaylistModal] = useState(false);
+
   return (
     <>
-      <div className="video-player">
+      <div className="video-player-wrapper">
         <div className="play-section">
-          <div>
+          <div className="video-player-container">
             <iframe
               className="iframe"
               src={`https://www.youtube.com/embed/${currentVideo.id.videoId}`}
               allowFullScreen
             ></iframe>
+            <div className="current-video-info-box">
+              <div>{currentVideo.snippet.title}</div>
+              <i
+                title="플레이리스트 추가"
+                className="fas fa-plus open-playlist-btn"
+                onClick={() => setOpenPlaylistModal(true)}
+              />
+            </div>
           </div>
-          <div>{currentVideo.snippet.title}</div>
-          <button onClick={() => setOpenPlaylistModal(true)}>저장</button>
-          <div>
+          <div className="comments-container">
+            <div className="comment-banner">
+              Recent Comments
+            </div>
             <ul>
               {comments.map((comment) => (
-                <li style={{ listStyleType: "none" }}>
-                  <div>
-                    {comment.snippet.topLevelComment.snippet.textDisplay}
+                <li className="each-comment-wrapper">
+                  <div className="each-comment-box">
+                    {comment}
                   </div>
-                  <hr></hr>
                 </li>
               ))}
             </ul>
           </div>
         </div>
         <div className="list-section">
+          <div className="side-bar-banner">
+            {trendVideoPlayer.length > 0 ? "Trending Videos" : "Other Videos"}
+          </div>
           {searchedVideo.length > 0 &&
             searchedVideo
               .filter((video) => video.id.videoId !== currentVideo.id.videoId)
@@ -57,7 +69,7 @@ function VideoPlayer({
                   key={video.id.videoId}
                   setCurrentVideo={setCurrentVideo}
                   setComments={setComments}
-                ></EachVideo2>
+                />
               ))}
           {playlistPlayer.length > 0 &&
             playlistPlayer
