@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TrendVideo from "./TrendVideo";
 import axios from "axios";
+import "./UI.css"
 
 function TrendVideoList({
   setCurrentVideo,
