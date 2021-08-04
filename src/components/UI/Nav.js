@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import Login from "../User/Login";
-import axios from "axios";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import logo from "../../images/maply_logo.png";
 import "./UI.css";
 
-function Nav({ setKakao, accessToken, clickLogout, setMode, loginHandler }) {
+function Nav({ accessToken, clickLogout, setMode, loginHandler }) {
   const history = useHistory();
 
   const clickHome = () => {

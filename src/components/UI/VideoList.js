@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EachVideo from "./EachVideo";
+import "./UI.css";
 
 function VideoList({
   searchedVideo,

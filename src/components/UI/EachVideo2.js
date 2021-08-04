@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import "./UI.css";
 
 function EachVideo2({ video, setCurrentVideo, setComments }) {
   const handleClickVideo = () => {

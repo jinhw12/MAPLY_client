@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import "./Playlist.css"
 
 function EachMyVideo({
   video,
@@ -12,8 +13,6 @@ function EachMyVideo({
   setCurrentPlaylist,
   accessToken,
   getPlaylist,
-  setPlaylist,
-  userInfo,
   currentPlaylistInfo,
 }) {
   const history = useHistory();

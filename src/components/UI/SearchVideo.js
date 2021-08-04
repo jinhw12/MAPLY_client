@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./UI.css";
 
 function SearchVideo({ setSearchedVideo, setMode }) {
   const [searchVideoInput, setSearchVideoInput] = useState("");

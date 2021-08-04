@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import "./UI.css";
 
 function EachVideo3({ video, setCurrentVideo, setComments }) {
   const { title, thumbnail, video_id } = video;
