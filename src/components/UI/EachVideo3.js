@@ -24,7 +24,7 @@ function EachVideo3({ video, setCurrentVideo, setComments }) {
       )
       .then((res) => {
         const comments = res.data.items.map(comment => comment.snippet.topLevelComment.snippet.textDisplay);
-        setCurrentVideo(video);
+        setCurrentVideo(myVideo);
         setComments(comments);
       });
   };

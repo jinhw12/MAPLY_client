@@ -44,7 +44,8 @@ function EachMyVideo({
     history.push("/");
   };
 
-  const deleteVideo = () => {
+  const deleteVideo = (e) => {
+    e.stopPropagation();
     axios
       .delete(`${process.env.REACT_APP_SERVER_URL}/video/${id}`, {
         headers: {
@@ -82,7 +83,7 @@ function EachMyVideo({
         <img className="myvideo-thumbnail" src={thumbnail}></img>
         <div className="myvideo-title">{title}</div>
         <div>
-          <div onClick={deleteVideo}>
+          <div onClick={(e) => { deleteVideo(e) }}>
             <i class="far fa-trash-alt del-myvideo"></i>
           </div>
         </div>
