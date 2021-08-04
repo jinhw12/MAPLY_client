@@ -1,19 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import EachMyVideo from "./EachMyVideo";
+import "./Playlist.css"
 
 function EachPlaylist({
   eachPlaylist,
   accessToken,
-  setCurrentVideo,
-  setMode,
-  setComments,
-  setPlaylistPlayer,
   handleCheckedPlaylist,
   showCheckbox,
-  getPlaylist,
-  setPlaylist,
-  userInfo,
   setCurrentPlaylist,
   setCurrentPlaylistInfo,
 }) {
